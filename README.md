@@ -75,6 +75,38 @@ These are project-type agnostic. They've been used for:
 - AI/LLM-powered applications
 - Data pipelines and automation tools
 
+## CLAUDE.md Files
+
+The `CLAUDE.md files/` directory contains ready-to-use `CLAUDE.md` files for specific project types. Drop the relevant one into your project root and rename it to `CLAUDE.md`.
+
+### `WAT CLAUDE.md` — WAT Framework Projects
+
+For projects built on the **WAT (Workflows, Agents, Tools)** architecture. This file instructs Claude to operate as an orchestration agent across three layers:
+
+- **Workflows** (`workflows/`) — Markdown SOPs defining objectives, inputs, tools, and edge cases
+- **Agents** — Claude's role: read workflows, run tools in sequence, handle failures, ask when unclear
+- **Tools** (`tools/`) — Python scripts for deterministic execution (API calls, file ops, data transforms)
+
+Includes instructions for error recovery, workflow maintenance, the self-improvement loop, and file structure conventions.
+
+**Use when:** Building automation pipelines, multi-tool agents, or any system where you want Claude to orchestrate Python scripts rather than do everything directly.
+
+### `Web Design CLAUDE.md` — Frontend Website Projects
+
+For building frontend websites with Claude Code. This file enforces a screenshot-driven design workflow with strict quality guardrails.
+
+- Invokes the `frontend-design` skill before any frontend code
+- Screenshot comparison loop (minimum 2 rounds against reference)
+- Local server setup via `node serve.mjs` at `localhost:3000`
+- Puppeteer screenshot workflow with auto-incrementing saves
+- Output defaults: single `index.html`, Tailwind via CDN, mobile-first
+- Anti-generic design rules: no default Tailwind palette, layered shadows, font pairing, gradient depth
+- Brand asset detection from `brand_assets/` folder
+
+**Use when:** Building or iterating on a frontend website and you want pixel-accurate results with a consistent design review loop.
+
+---
+
 ## Setting Up AI Agent Rules in Your IDE
 
 Most AI coding tools support a project-level instructions file that the agent reads before every interaction. Add one of these files to your project root so the AI automatically follows your templates without you having to remind it.
